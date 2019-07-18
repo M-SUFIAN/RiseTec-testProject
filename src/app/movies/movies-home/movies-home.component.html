@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-header">
+    <h1>{{pageTitle}} </h1>
+  </div>
+  
+  <div class="card-body">
+      <button class="btn btn-primary" style="margin-left: 80%" [routerLink]="['/login']">Log out</button>
+    <div class="row">
+      <div class="col-md-2">
+        <h3 style="font-weight: bold;color:#009DD8;">Search Movies</h3>
+      </div>
+      <div class="col-md-2">
+        <input style='border: 4px solid #009DD8;
+        border-radius: 4px;' type="text" [(ngModel)]="listFilter"/>
+
+        <button (click)=" getMoviesbyName()" class="btn btn-primary"> Enter</button>
+        
+      </div>
+      
+    </div>
+
+
+    <!-- <div class="row">
+      <div class="col-md-6">
+        <h4 style="font-weight: bold;color:#009DD8;">You Searched: </h4>
+      </div>
+    </div> -->
+
+    <div class="table-responsive" >
+      <div *ngIf="!movies"> 
+        No Data </div>
+      <table class="table" *ngIf="movies">
+        <tr>
+
+          <th>Movie Name</th>
+          <th>Release Date</th>
+          <th>Type</th>
+          <th>Imdb ID</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let movie of movies">
+            <td><a [routerLink]="['/detail',movie.imdbID]" >{{movie.Title}}</a></td>
+            <td>{{movie.Year}}</td>
+            <td>{{movie.Type}}</td>
+            <td>{{movie.imdbID}}</td>
+           
+          </tr>
+
+          <!-- <tr *ngIf="movies.lenth==0">
+            <td></td>
+            <td></td>
+            <td> No Data Available </td>
+            <td></td>
+            <td></td>
+          </tr> -->
+        </tbody>
+      </table>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
